@@ -1,12 +1,13 @@
 import {Footer, NavBar} from "./PageComponents";
 import Enroll from '../components/Enroll'
-import '../css/courseRegistration.css'
+import '../css/global-for-pages.css'
+
 
 function CourseRegistration() {
     return (
-        <div className="CourseRegistration">
+        <div>
             <NavBar/>
-                <div className="main-container">
+                <div className="flex-container">
                     <Enroll />
                 </div>
             <Footer/>

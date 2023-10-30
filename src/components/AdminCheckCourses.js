@@ -3,6 +3,8 @@ import { useState } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
 import courses from '../databases/courses.json'
+import '../css/adminCheckCourse.css'
+
 
 function AdminCheckCourses() {
 
@@ -23,7 +25,7 @@ function AdminCheckCourses() {
 
 
   return (
-    <div className="main-container">
+    <div className="main-container-check-course">
         <div className="filter-section">
           <CourseFilter 
             handleSearch={handleSearch} />

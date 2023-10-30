@@ -1,15 +1,13 @@
 import { Footer, NavBar } from "./PageComponents";
-import "../css/style.css";
 import SignUpForm from '../components/SignUpForm'
-import '../css/signUp.css'
-
+import '../css/global-for-pages.css'
 
 function SignUp() {
   return (
     <div className="Auth">
         <NavBar />
 
-        <div className="main-container-signup">
+        <div className="flex-container">
           <SignUpForm />
         </div>
         <Footer />
