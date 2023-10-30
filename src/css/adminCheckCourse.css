@@ -1,0 +1,10 @@
+.filter-section{
+    margin-right: 100px;
+}
+
+.courses-section{
+    height: 100vh;
+    overflow-y: auto;
+    width: auto;
+}
+

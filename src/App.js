@@ -4,7 +4,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import CourseRegistration from "./pages/CourseRegistration.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import AdminCheckCoursesPage from "./pages/AdminCheckCoursesPage";
 function App() {
   return (
     <div className="App">
@@ -14,6 +14,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Enroll" element={<CourseRegistration/>}/>
+          <Route path="/AdminCheckCourses" element={<AdminCheckCoursesPage />}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
       </BrowserRouter>
