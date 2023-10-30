@@ -1,4 +1,4 @@
-import {Footer, NavBar} from "./PageComponents";
+import {Footer, NavBar} from "../components/PageComponents";
 
 function Error() {
     return (

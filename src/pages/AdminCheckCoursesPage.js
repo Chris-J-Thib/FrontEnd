@@ -1,4 +1,4 @@
-import {Footer, NavBar} from "./PageComponents";
+import {Footer, NavBar} from "../components/PageComponents";
 import AdminCheckCourses from '../components/AdminCheckCourses'
 import '../css/global-for-pages.css'
 

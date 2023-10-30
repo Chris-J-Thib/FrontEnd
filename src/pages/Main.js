@@ -1,4 +1,4 @@
-import { NavBarHome, Footer } from "./PageComponents";
+import { NavBarHome, Footer } from "../components/PageComponents";
 import "../css/main.css";
 import '../css/global-for-pages.css'
 

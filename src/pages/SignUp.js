@@ -1,4 +1,4 @@
-import { Footer, NavBar } from "./PageComponents";
+import { Footer, NavBar } from "../components/PageComponents";
 import SignUpForm from '../components/SignUpForm'
 import '../css/global-for-pages.css'
 
