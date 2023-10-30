@@ -10,7 +10,7 @@ function Course(props) {
         <p className='course-code'>{props.code}</p>
         <p className='course-description'>{props.description}</p>
         <p className='course-date'>{props.startingDate} - {props.endingDate}</p>
-        <button className='enroll-button'>Enroll</button>
+        <div>{props.children}</div>
       </div>
 
       <img 

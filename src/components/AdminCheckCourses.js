@@ -29,7 +29,7 @@ function AdminCheckCourses() {
             handleSearch={handleSearch} />
         </div>
         <div className="courses-section">
-          <CourseList courses={courseList}/>
+          <CourseList courses={courseList} student={false}/>
         </div>
     </div>
   );

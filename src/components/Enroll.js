@@ -30,7 +30,8 @@ function Enroll() {
             handleSearch={handleSearch} />
         </div>
         <div className="courses-section">
-          <CourseList courses={courseList}/>
+          <CourseList courses={courseList} student={true}/>
+
         </div>
     </div>
   );
