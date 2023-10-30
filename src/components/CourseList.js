@@ -1,5 +1,6 @@
 import React from "react";
 import Course from './Course';
+import '../css/courseList.css'
 
 function CourseList (props) {
   return (

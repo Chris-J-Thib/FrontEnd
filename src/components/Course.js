@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/course.css'
+import '../css/course.css';
 
 function Course(props) {
   return (
