@@ -1,12 +1,13 @@
 import {Footer, NavBar} from "./PageComponents";
 import AdminCheckCourses from '../components/AdminCheckCourses'
-import '../css/adminCheckCoursesPage.css'
+import '../css/global-for-pages.css'
+
 
 function CourseRegistration() {
     return (
-        <div className="AdminCheckCoursePage">
+        <div>
             <NavBar/>
-                <div className="main-container">
+                <div className="flex-container">
                     <AdminCheckCourses />
                 </div>
             <Footer/>

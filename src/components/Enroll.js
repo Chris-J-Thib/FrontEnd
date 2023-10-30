@@ -24,7 +24,7 @@ function Enroll() {
 
 
   return (
-    <div className="main-container">
+    <div className="main-container-enroll">
         <div className="filter-section">
           <CourseFilter 
             handleSearch={handleSearch} />
