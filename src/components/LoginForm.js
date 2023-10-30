@@ -6,7 +6,7 @@ function LoginForm() {
       <div className="main-container-login-form">
         <form>
           <div>
-          <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email:</label>
             <input  type="text" id="email" />
             <br />
             <label htmlFor="password">Password:</label>
@@ -15,17 +15,15 @@ function LoginForm() {
             <div className='sign-in-button-section'>
               <button type="submit">Sign In</button>
             </div>
-            
-          </div>
-          
-          <div className="signup-section">
-            <p>Don't you have an account yet?</p>
-            <button type="button" onClick={() => { window.location.href = "/SignUp"; }}>
-              Sign Up
-            </button>
           </div>
         </form>
 
+        <div className="signup-section">
+          <p>Don't you have an account yet?</p>
+          <button type="button" onClick={() => { window.location.href = "/SignUp"; }}>
+            Sign Up
+          </button>
+        </div>
       </div>
   )
 }

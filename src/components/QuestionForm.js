@@ -15,7 +15,7 @@ function QuestionForm() {
           <input type="text" id="name" />
           <br />
           <label htmlFor="email">Email:</label>
-          <input  type="text" id="email" />
+          <input  type="email" id="email" />
           <br />
           <label htmlFor="phone">Phone:</label>
           <input type="tel" id="phone" />
