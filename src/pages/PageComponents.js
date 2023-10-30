@@ -16,6 +16,7 @@ export function NavBar() {
                         <li><a href="/Login">Login</a></li>
                         <li><a href="/Enroll">Enroll</a></li>
                         <li><a href="/AdminCheckCourses">Admin Check courses</a></li>
+                        <li><a href="/AdminAddCourses">Admin Add courses</a></li>
                     </ul>
                 </div>
             </nav>
