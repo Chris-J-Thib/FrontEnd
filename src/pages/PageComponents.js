@@ -5,6 +5,22 @@ import instagram from '../img/Instagram.png'
 import twitter from '../img/Twitter.png'
 import linkedin from '../img/Linkedin.png'
 
+export function NavBarHome() {
+    return (
+        <div className="NavBar">
+            <nav>
+                <div>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/SignUp">SignUp</a></li>
+                        <li><a href="/Login">Login</a></li>
+                        <li><a href="/Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    )
+}
 export function NavBar() {
     return (
         <div className="NavBar">

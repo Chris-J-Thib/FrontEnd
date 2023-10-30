@@ -6,6 +6,7 @@ import CourseRegistration from "./pages/CourseRegistration.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminCheckCoursesPage from "./pages/AdminCheckCoursesPage";
 import AdminAddCourses from "./pages/AdminAddCoursePage";
+import QuestionForm from "./components/QuestionForm";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Enroll" element={<CourseRegistration />} />
           <Route path="/AdminCheckCourses" element={<AdminCheckCoursesPage />} />
           <Route path="/AdminAddCourses" element={<AdminAddCourses />} />
+          <Route path="/Contact" element={<QuestionForm />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
