@@ -30,16 +30,7 @@ function Enroll() {
             handleSearch={handleSearch} />
         </div>
         <div className="courses-section">
-          {/* {courses.map((course) => {
-              return <Course
-                name={course.name}
-                code={course.code}
-                description={course.description}
-                startingDate={course.startDate}
-                endingDate={course.endDate}
-                image={require(`../${course.imageURL}`)} />
-            })}; */}
-            <CourseList courses={courseList}/>
+          <CourseList courses={courseList}/>
         </div>
     </div>
   );
