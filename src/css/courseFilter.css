@@ -1,0 +1,9 @@
+.filter-container{
+    width: 300px;
+    background-color: rgb(247, 244, 244);
+    padding: 30px;
+    border: 2px solid rgb(0, 0, 0);
+}
+h2 {
+    margin-bottom: 20px;
+}

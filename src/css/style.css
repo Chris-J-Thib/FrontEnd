@@ -1,0 +1,28 @@
+/*this is the default style that all pages share*/
+.NavBar {
+  background-color: #00499e;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.NavBar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.NavBar nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+}
+.NavBar a:hover {
+  background-color: #012677;
+  border-radius: 5px;
+}

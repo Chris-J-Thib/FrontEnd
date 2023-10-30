@@ -1,0 +1,56 @@
+/*This is the CSS for the login and sign up pages.*/
+
+.Auth body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .Auth body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Auth body ul li {
+    margin-bottom: 10px;
+  }
+  
+  .Auth body input[type="text"],
+  .Auth body input[type="password"],
+  .Auth body input[type="date"],
+  .Auth body select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .Auth body select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  button,
+  a {
+    background-color: #00499e;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #butLog,
+  #butSign {
+    /* center */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
