@@ -2,4 +2,16 @@
     width: 340px;
     padding: 50px 20px;
     border: 2px solid #000000;
+    border-radius: 10px;
+    background-color: #f7f5ff;
+}
+
+.signup-section{
+
+    margin-top: 40px;
+    text-align: center;
+}
+
+.sign-in-button-section{
+    text-align: right;
 }

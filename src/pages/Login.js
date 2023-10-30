@@ -1,11 +1,12 @@
 import { NavBar, Footer } from "./PageComponents";
 import "../css/style.css";
 import LoginForm from "../components/LoginForm";
+import '../css/login.css'
 
 
 function Login() {
     return (
-        <div className="Auth">
+        <div>
             <NavBar />
             {/* <div>
                 <ul>
@@ -18,7 +19,10 @@ function Login() {
                 <label id="lblCheck" for="butSign">Don't have an account yet?</label>
                 <button id="butSign"><a href="/SignUp">SignUp</a></button>
             </div> */}
-            <LoginForm />
+            <div className="main-container-login">
+                <LoginForm />
+            </div>
+            
 
             <Footer />
         </div>

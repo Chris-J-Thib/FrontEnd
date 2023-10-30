@@ -12,10 +12,13 @@ function LoginForm() {
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" />
             <br />
-            <button type="submit">Sign in</button>
+            <div className='sign-in-button-section'>
+              <button type="submit">Sign In</button>
+            </div>
+            
           </div>
           
-          <div>
+          <div className="signup-section">
             <p>Don't you have an account yet?</p>
             <button type="button" onClick={() => { window.location.href = "/SignUp"; }}>
               Sign Up
