@@ -1,12 +1,11 @@
 img {
   width: 100%;
-  height: auto;
 }
 
 .Main {
   background-image: url("../img/background.jpeg");
   background-size: cover;
-  height: 90vh;
+  height: 95vh;
   color: #fff;
   font-size: x-large;
   margin: 0px auto;
@@ -14,16 +13,15 @@ img {
 }
 
 .mainContainer {
-  margin: 0px auto;
+  margin: 40px auto;
+  padding: 20px auto;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   max-width: 800px;
   text-align: center;
-}
-
-.title {
   font-size: 1.5rem;
   font-weight: 600;
   padding: 10px;
@@ -32,18 +30,8 @@ img {
   border-radius: 25px;
 }
 
-.flexContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.adminContainer,
-.studentContainer {
-  flex: 1;
-  margin: 5px;
-  padding: 20px;
-  text-align: center;
-  background-color: #00000075;
-  border-radius: 10px;
+.mainContainer h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
