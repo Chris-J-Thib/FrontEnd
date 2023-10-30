@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-container {
+    flex: 1; /* Esto hará que el div ocupe todo el espacio disponible */
+    background-color: #ff2727;
+    padding: 10px;
+    height: calc(100vh - 60px - 40px); /* 60px de header y 40px de footer */
+    overflow-y: auto; /* Añadido por si el contenido es más largo que el espacio disponible */
+}
+
