@@ -2,6 +2,8 @@
     {
         "username": "admin",
         "password": "admin",
+        "email": "admin@mybvc.ca",
+        "program": "Post-Diploma",
         "id": 1,
         "courses": []
     }
