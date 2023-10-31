@@ -6,22 +6,6 @@ import twitter from '../img/Twitter.png'
 import linkedin from '../img/Linkedin.png'
 import { GetUserType } from './GetData'
 
-export function NavBarHome() {
-    return (
-        <div className="NavBar">
-            <nav>
-                <div>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/SignUp">SignUp</a></li>
-                        <li><a href="/Login">Login</a></li>
-                        <li><a href="/Contact">Contact Us</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    )
-}
 export function NavBar() {
     return (
         <div className="NavBar">
@@ -30,10 +14,11 @@ export function NavBar() {
                     <ul>
                         <li><a href="/">Home</a></li>
                         {sessionStorage.getItem("id") === null ? <li><a href="/SignUp">SignUp</a></li> : ''}
-                        {sessionStorage.getItem("id") === null ?  <li><a href="/Login">Login</a></li> : ''}
+                        {sessionStorage.getItem("id") === null ? <li><a href="/Login">Login</a></li> : ''}
                         {sessionStorage.getItem("id") !== null ? <li><a href="/Enroll">Enroll</a></li> : ''}
                         {GetUserType() === "Admin" ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
                         {GetUserType() === "Admin" ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
+                        <li><a href="/Contact">Contact Us</a></li>
                     </ul>
                 </div>
             </nav>

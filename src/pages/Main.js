@@ -1,11 +1,11 @@
-import { NavBarHome, Footer } from "../components/PageComponents";
+import { NavBar, Footer } from "../components/PageComponents";
 import "../css/main.css";
 import '../css/global-for-pages.css';
 
 function Main() {
     return (
         <div >
-            <NavBarHome />
+            <NavBar />
 
             <div className="flex-container">
                 <div className="mainContainer">
