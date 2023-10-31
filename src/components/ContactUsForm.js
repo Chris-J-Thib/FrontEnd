@@ -1,10 +1,10 @@
 import React from "react";
 import '../css/questionForm.css'
 
-function QuestionForm() {
+function ContactUsForm() {
   return (
     <div className="question-form-container">
-      
+
       <div className="title-section">
         <h2>Contact admin</h2>
       </div>
@@ -15,7 +15,7 @@ function QuestionForm() {
           <input type="text" id="name" />
           <br />
           <label htmlFor="email">Email:</label>
-          <input  type="email" id="email" />
+          <input type="email" id="email" />
           <br />
           <label htmlFor="phone">Phone:</label>
           <input type="tel" id="phone" />
@@ -27,7 +27,7 @@ function QuestionForm() {
           <input type="text" id="program" />
           <br />
         </div>
-          
+
 
         <div className="question-section">
           <label htmlFor="question">Question:</label>
@@ -46,4 +46,4 @@ function QuestionForm() {
   );
 }
 
-export default QuestionForm;
+export default ContactUsForm;

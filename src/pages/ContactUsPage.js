@@ -1,8 +1,8 @@
 import { Footer, NavBar } from "../components/PageComponents";
-import QuestionForm from '../components/QuestionForm'
+import QuestionForm from '../components/ContactUsForm'
 import '../css/global-for-pages.css'
 
-function QuestionFormPage() {
+function ContactUsPage() {
   return (
     <div className="Auth">
       <NavBar />
@@ -14,4 +14,4 @@ function QuestionFormPage() {
   );
 }
 
-export default QuestionFormPage;
+export default ContactUsPage;
