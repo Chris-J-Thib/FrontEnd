@@ -13,7 +13,7 @@ img {
 }
 
 .mainContainer {
-  margin: 40px auto;
+  margin: 200px auto;
   padding: 20px auto;
   height: 50%;
   display: flex;
@@ -34,4 +34,18 @@ img {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #fff;
+}
+.mainContainer p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.background {
+  background-image: url("../img/background.jpeg");
+  background-size: cover;
+  height: 90vh;
+  width: 100%;
+  position: fixed;
 }

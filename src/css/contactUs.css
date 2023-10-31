@@ -1,0 +1,31 @@
+.question-form-container {
+  width: 400px;
+  height: auto;
+  background-color: #f7f5ff;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+#question {
+  height: 200px;
+  width: 100%;
+  resize: none;
+}
+
+.logged-in-user-info {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.question-section {
+  text-align: left;
+}
+
+.buttons-section {
+  text-align: right;
+}

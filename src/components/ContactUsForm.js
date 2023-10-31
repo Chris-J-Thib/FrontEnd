@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/questionForm.css';
+import '../css/contactUs.css';
 import '../css/signUpForm.css';
 
 function ContactUsForm() {
@@ -22,15 +22,15 @@ function ContactUsForm() {
           <input type="tel" id="phone" />
           <br />
           <select name="Department" id="dpt">
-          <option value="" disabled selected hidden>Department</option>
-          <option value="SD">Software Development</option>
+            <option value="" disabled selected hidden>Department</option>
+            <option value="SD">Software Development</option>
           </select>
           <br />
           <select name="Program" id="prgm">
-          <option value="" disabled selected hidden>Program</option>
-          <option>Certificate</option>
-          <option>Diploma</option>
-          <option>Post-Diploma</option>
+            <option value="" disabled selected hidden>Program</option>
+            <option>Certificate</option>
+            <option>Diploma</option>
+            <option>Post-Diploma</option>
           </select>
           <br />
         </div>
