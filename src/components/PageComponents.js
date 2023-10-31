@@ -4,7 +4,7 @@ import facebook from '../img/Facebook.png'
 import instagram from '../img/Instagram.png'
 import twitter from '../img/Twitter.png'
 import linkedin from '../img/Linkedin.png'
-import { GetUserType, Logout } from './GetData'
+import { GetUserType, Logout } from './DataManagement.js'
 
 export function NavBar() {
     return (
