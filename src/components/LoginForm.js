@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/loginForm.css'
-import {SignIn} from "./GetData.js"
+import {SignIn} from "./DataManagement.js"
 
 function LoginForm() {
   return (

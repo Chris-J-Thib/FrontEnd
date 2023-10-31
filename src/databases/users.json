@@ -3,8 +3,8 @@
         "firstName": "",
         "lastName": "",
         "email": "admin@mybvc.ca",
-        "password": "admin",
         "program": "Admin",
+        "password": "admin",
         "id": 0,
         "courses": []
     },
@@ -12,8 +12,8 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "j.doe@mybvc.ca",
-        "password": "pass123",
         "program": "Diploma",
+        "password": "pass123",
         "id": 1,
         "courses": []
     }
