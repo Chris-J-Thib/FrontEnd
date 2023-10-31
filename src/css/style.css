@@ -1,7 +1,7 @@
 /*this is the default style that all pages share*/
 .NavBar {
   background-color: #00499e;
-  padding: 5px;
+  /* padding: 5px; */
   display: flex;
   justify-content: center;
   align-items: center;
