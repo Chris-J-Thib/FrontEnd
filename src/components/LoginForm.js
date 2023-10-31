@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/loginForm.css'
-import SignIn from "./Auth.js"
+import {SignIn} from "./GetData.js"
 
 function LoginForm() {
   return (
@@ -14,7 +14,7 @@ function LoginForm() {
             <input type="password" id="password" />
             <br />
             <div className='sign-in-button-section'>
-              <button type="submit" onClick={SignIn}>Sign In</button>
+              <button type="reset" onClick={SignIn}>Sign In</button>
             </div>
           </div>
         </form>

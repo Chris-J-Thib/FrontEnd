@@ -10,7 +10,6 @@ function CourseAddition() {
             </div>
             <Footer />
         </div>
-
     )
 }
 

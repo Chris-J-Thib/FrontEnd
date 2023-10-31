@@ -1,6 +1,6 @@
 import { NavBarHome, Footer } from "../components/PageComponents";
 import "../css/main.css";
-import '../css/global-for-pages.css'
+import '../css/global-for-pages.css';
 
 function Main() {
     return (

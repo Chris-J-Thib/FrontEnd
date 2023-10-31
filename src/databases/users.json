@@ -1,9 +1,19 @@
 [
     {
-        "username": "admin",
-        "password": "admin",
+        "firstName": "",
+        "lastName": "",
         "email": "admin@mybvc.ca",
-        "program": "Post-Diploma",
+        "password": "admin",
+        "program": "Admin",
+        "id": 0,
+        "courses": []
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "j.doe@mybvc.ca",
+        "password": "pass123",
+        "program": "Diploma",
         "id": 1,
         "courses": []
     }
