@@ -20,11 +20,17 @@ function QuestionForm() {
           <label htmlFor="phone">Phone:</label>
           <input type="tel" id="phone" />
           <br />
-          <label htmlFor="department">Department:</label>
-          <input type="text" id="department" />
+          <select name="Department" id="dpt">
+          <option value="" disabled selected hidden>Department</option>
+          <option value="SD">Software Development</option>
+          </select>
           <br />
-          <label htmlFor="program">Program:</label>
-          <input type="text" id="program" />
+          <select name="Program" id="prgm">
+          <option value="" disabled selected hidden>Program</option>
+          <option>Certificate</option>
+          <option>Diploma</option>
+          <option>Post-Diploma</option>
+          </select>
           <br />
         </div>
           
