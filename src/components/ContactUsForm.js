@@ -1,6 +1,5 @@
 import React from "react";
-import '../css/contactUs.css';
-import '../css/signUpForm.css';
+import '../css/contactUsForm.css';
 
 function ContactUsForm() {
   return (
