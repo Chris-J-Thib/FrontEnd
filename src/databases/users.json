@@ -16,5 +16,70 @@
         "program": "Diploma",
         "id": 1,
         "courses": []
+    },
+    {
+        "firstName": "Javier",
+        "lastName": "Saez",
+        "email": "j.saez@mybvc.ca",
+        "password": "pass123",
+        "program": "Diploma",
+        "id": 3,
+        "courses": [
+            {
+                "code": "SODV1101",
+                "name": "Programming Fundamentals",
+                "startDate": "2023-09-01",
+                "endDate": "2023-12-31",
+                "imageURL": "img/programming-fundamentals.png",
+                "description": "Computer programming is central to software development. Learners analyze basic software and technology problems and develop a good programming style and logical thinking to write structured instruction that addresses those problems. Learners demonstrate their structured coding skills by writing correct code with clarity and quality. They use extensively the structured control flow, repetition, block structure, and subroutines in this course.",
+                "term": "",
+                "program": "Diploma",
+                "enrolled": []
+            },
+            {
+                "code": "TECH1101",
+                "name": "Web and Internet Fundamentals",
+                "startDate": "2023-09-01",
+                "endDate": "2023-12-31",
+                "imageURL": "img/web-and-internet-fundamentals.png",
+                "description": "This course focuses on the design, construction and website publishing that meet web standards for the internet. During the design of websites, learners address issues such as bandwidth, aesthetics and the user interface. During the construction of websites, learners focus on the use of Hyper Text Markup Language (HTML), cascading style sheets (CSS), basic client-side scripting, website maintenance and web technologies.",
+                "term": "",
+                "program": "Diploma",
+                "enrolled": []
+            },
+            {
+                "code": "TECH1102",
+                "name": "Internet of Things",
+                "startDate": "2023-09-01",
+                "endDate": "2023-12-31",
+                "imageURL": "img/internet-of-things.png",
+                "description": "This course focuses on the pervasiveness of the internet. Learners explore the internet of things through the construction of simple interfaces between computers and the devices they control. Through the creation of these interfaces, learners gain insight into the elements of computer architecture, networking, and the programs that control device function within that network.",
+                "term": "",
+                "program": "Diploma",
+                "enrolled": []
+            },
+            {
+                "code": "MGMT1103",
+                "name": "Introduction to Project Teams and Technical Communications for Software Development",
+                "startDate": "2023-09-01",
+                "endDate": "2023-12-31",
+                "imageURL": "img/introduction-to-project-teams-and-technical-communications-for-software-development.png",
+                "description": "This course prepares learners to function as part of a member of an IT project team.  Practical skills in effective communications and accurate technical communications are applied in real-world organization scenarios.  Learners will also be introduced to roles within a project team as it relates to project management methodologies.",
+                "term": "",
+                "program": "Diploma",
+                "enrolled": []
+            },
+            {
+                "code": "MATH1901",
+                "name": "Math for the Computer Industry",
+                "startDate": "2023-09-01",
+                "endDate": "2023-12-31",
+                "imageURL": "img/math-for-the-computer-industry.png",
+                "description": "This course provides learners with the practical knowledge and skills in the use of mathematics in relation to computers. Alternate number bases, set theory, logic, and Boolean algebra are the foundation of this course. In addition, learners use basic statistical concepts to understand challenges in information technology.",
+                "term": "",
+                "program": "Diploma",
+                "enrolled": []
+            }
+        ]
     }
 ]
