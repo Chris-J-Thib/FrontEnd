@@ -1,7 +1,7 @@
 import users from "../databases/users.json";
 import courses from "../databases/courses.json";
 
-export async function SignIn(){
+export function SignIn(){
     let em = document.getElementById('email').value;
     let pw = document.getElementById('password').value;
     users.forEach((o)=>{
@@ -12,13 +12,14 @@ export async function SignIn(){
     })
 }
 
-export async function GetUserType(){
+export function GetUserType(){
+    if(sessionStorage.getItem("id")==null)return null;
     let ret = users.filter((o)=>o.id == sessionStorage.getItem("id"))[0].program;
-    //console.log(ret);
+    console.log(ret);
     return ret;
 }
 
-export async function GetEnrolled(CODE){
+export function GetEnrolled(CODE){
     let ret = courses.filter((o)=>o.code == CODE)[0].enrolled;
     //console.log(ret);
     return ret;
