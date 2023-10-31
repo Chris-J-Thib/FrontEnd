@@ -16,6 +16,12 @@
     text-align: right;
     margin-bottom: 20px;
 }
+
+select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .question-section{
     text-align: left;
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import '../css/questionForm.css'
+import '../css/questionForm.css';
+import '../css/signUpForm.css';
 
 function ContactUsForm() {
   return (
