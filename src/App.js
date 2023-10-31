@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminCheckCoursesPage from "./pages/AdminCheckCoursesPage";
 import AdminAddCourses from "./pages/AdminAddCoursePage";
 import ContactUsPage from "./pages/ContactUsPage";
+import MyCoursesPage from "./pages/MyCoursesPage";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <Route path="/AdminCheckCourses" element={<AdminCheckCoursesPage />} />
           <Route path="/AdminAddCourses" element={<AdminAddCourses />} />
           <Route path="/Contact" element={<ContactUsPage />} />
+          <Route path="/MyCourses" element={<MyCoursesPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

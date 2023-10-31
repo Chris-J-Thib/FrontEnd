@@ -1,0 +1,19 @@
+.filter-section{
+    margin-right: 100px;
+}
+
+.courses-section{
+    height: 80vh; 
+    overflow-y: auto;
+    width: auto;
+}
+
+.main-container-my-courses{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+}
+
