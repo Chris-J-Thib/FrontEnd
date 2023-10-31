@@ -12,6 +12,11 @@ export function SignIn(){
     })
 }
 
+export function Logout() {
+    sessionStorage.clear();
+    window.location.href = "/";
+}
+
 export function GetUserType(){
     if(sessionStorage.getItem("id")==null)return null;
     let ret = users.filter((o)=>o.id == sessionStorage.getItem("id"))[0].program;
