@@ -1,6 +1,7 @@
 import React from "react";
 import '../css/signUpForm.css'
 import '../css/global-for-pages.css'
+import { SignUp } from "./DataManagement";
 
 function SignUpForm() {
   return (
@@ -34,7 +35,7 @@ function SignUpForm() {
         <input type="password" id="password" placeholder="password" />
 
         <div className='sign-up-button-section'>
-          <button type="submit">Sign Up</button>
+          <button type="reset" onClick={SignUp}>Sign Up</button>
         </div>
       </form>
       <div className="login-section">

@@ -13,11 +13,11 @@ export function NavBar() {
                 <div>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        {sessionStorage.getItem("id") === null ? <li><a href="/SignUp">SignUp</a></li> : ''}
-                        {sessionStorage.getItem("id") === null ? <li><a href="/Login">Login</a></li> : ''}
-                        {sessionStorage.getItem("id") !== null ? <li><a href="/Enroll">Enroll</a></li> : ''}
-                        {GetUserType() === "Admin" ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
-                        {GetUserType() === "Admin" ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
+                        {sessionStorage.getItem("id") == null ? <li><a href="/SignUp">SignUp</a></li> : ''}
+                        {sessionStorage.getItem("id") == null ? <li><a href="/Login">Login</a></li> : ''}
+                        {sessionStorage.getItem("id") != null ? <li><a href="/Enroll">Enroll</a></li> : ''}
+                        {GetUserType() == "Admin" ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
+                        {GetUserType() == "Admin" ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
                         <li><a href="/Contact">Contact Us</a></li>
                         {sessionStorage.getItem("id") !== null ? <li><button onClick={Logout}>Logout</button></li> : ''}
                     </ul>
