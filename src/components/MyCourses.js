@@ -3,11 +3,11 @@ import '../css/myCourses.css'
 import { useState } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
-import users from '../databases/users.json'
+import { GetCourses } from "./DataManagement";
 
 function MyCourses() {
 
-  const userCourses = users.filter(user => user.id == sessionStorage.getItem("id"))[0].courses;
+  const userCourses = GetCourses();
 
   const [courseList, setCourseList] = useState(userCourses);
 

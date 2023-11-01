@@ -72,6 +72,16 @@ export function GetUserType(){
     return ret;
 }
 
+export function GetCourses(){
+    if(sessionStorage.getItem("id")==null)return null;
+    let ret = users.filter((o)=>o.id == sessionStorage.getItem("id"))[0].courses;
+    if(ret == null){
+        ret = localStorage.getItem(sessionStorage.getItem("id")).courses;
+    }
+    //console.log(ret);
+    return ret;
+}
+
 export function GetEnrolled(CODE){
     let ret = courses.filter((o)=>o.code == CODE)[0].enrolled;
     //console.log(ret);

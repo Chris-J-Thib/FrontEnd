@@ -4,6 +4,7 @@
         "lastName": "",
         "email": "admin@mybvc.ca",
         "program": "Admin",
+        "username": "admin",
         "password": "admin",
         "id": 0,
         "courses": []
