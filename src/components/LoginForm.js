@@ -7,8 +7,8 @@ function LoginForm() {
       <div className="main-container-login-form">
         <form>
           <div>
-            <label htmlFor="email">Email:</label>
-            <input  type="text" id="email" />
+            <label htmlFor="email">Username or Email:</label>
+            <input  type="text" id="user" />
             <br />
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" />

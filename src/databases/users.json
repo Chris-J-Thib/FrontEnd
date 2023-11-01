@@ -24,7 +24,7 @@
         "email": "j.saez@mybvc.ca",
         "password": "pass123",
         "program": "Diploma",
-        "id": 3,
+        "id": 2,
         "courses": [
             {
                 "code": "SODV1101",

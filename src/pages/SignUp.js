@@ -15,4 +15,19 @@ function SignUp() {
   );
 }
 
+//      { user example
+//        "firstName": "",
+//        "lastName": "",
+//        "email": "",
+//        "phone": "",
+//        "dob": "",
+//        "department": "",
+//        "program": "",
+//        "username": "",
+//        "password": "",
+//        "id": users.length,
+//        "courses": []
+//     },
+
+
 export default SignUp;

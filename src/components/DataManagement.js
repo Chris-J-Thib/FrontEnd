@@ -4,7 +4,7 @@ import courses from "../databases/courses.json";
 
 export function SignIn(){
     let id = null;
-    let user = document.getElementById('email').value;
+    let user = document.getElementById('user').value;
     let pw = document.getElementById('password').value;
     users.forEach((o)=>{
         if((o.username == user || o.email == user) && o.password == pw){
