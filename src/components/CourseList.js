@@ -1,5 +1,6 @@
 import React from "react";
 import Course from './Course';
+import { AddCourse } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
@@ -16,7 +17,7 @@ function CourseList (props) {
           image={require(`../${course.imageURL}`)}>
             <div>
             {props.student ? (
-              <button>Enroll</button>
+              <button onClick={AddCourse}>Enroll</button>
             ) : (
               <>
                 <button>View</button>

@@ -1,42 +1,29 @@
-import users from "../databases/users.json";
 import courses from "../databases/courses.json";
 
-
 export function SignIn(){
-    let id = null;
+    sessionStorage.clear();
     let user = document.getElementById('user').value;
     let pw = document.getElementById('password').value;
-    users.forEach((o)=>{
-        if((o.username == user || o.email == user) && o.password == pw){
-            sessionStorage.setItem("id",o.id);
-            window.location.href = "/";
-        }
-    })
+    let st = document.getElementById('status');
+
     for(let i = 0; i < localStorage.length; i++){
-        let o = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        if((o.username == user || o.email == user) && o.password == pw){
-            sessionStorage.setItem("id",o.id);
-            window.location.href = "/";
-        }
+        let o = JSON.parse(localStorage.getItem(i));
+        if(o.email == user || o.username == user){
+            if(o.password == pw){
+                sessionStorage.setItem("id",o.id);
+                window.location.href = '/';
+                break;
+            } else {
+                st.innerText = "Incorrect Password.\n"
+                break;
+            }
+        } else st.innerText = "User does not exist.\n";
     }
+
 }
 
 export function SignUp(){
-
-    let user = document.getElementById('email').value;
-    let pw = document.getElementById('password').value;
-
-    users.forEach((o)=>{
-        if((o.username == user || o.email == user)){
-            return
-        }
-    })
-    for(let i = 0; i < localStorage.length; i++){
-        let o = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        if((o.username == user || o.email == user)){
-            return
-        }
-    }
+    if(GetUserValue("id") != null) return;
 
     let newUser = {
         "firstName": document.getElementById("firstName").value,
@@ -48,7 +35,7 @@ export function SignUp(){
         "program": document.getElementById("prgm").value,
         "username": document.getElementById("username").value,
         "password": document.getElementById("password").value,
-        "id": users.length,
+        "id": localStorage.length,
         "courses": []
     }
     localStorage.setItem(newUser.id,JSON.stringify(newUser));
@@ -62,28 +49,40 @@ export function Logout() {
     window.location.href = "/";
 }
 
-export function GetUserType(){
-    if(sessionStorage.getItem("id")==null)return null;
-    let ret = users.filter((o)=>o.id == sessionStorage.getItem("id"))[0].program;
-    if(ret == null){
-        ret = localStorage.getItem(sessionStorage.getItem("id")).program;
+export function GetUserValue(value){
+    let id = sessionStorage.getItem("id");
+    if( id == null){
+        return null;
+    } else {
+        let ret = JSON.parse(localStorage.getItem(id))[value];
+        return ret;
     }
-    //console.log(ret);
-    return ret;
+    
 }
 
-export function GetCourses(){
-    if(sessionStorage.getItem("id")==null)return null;
-    let ret = users.filter((o)=>o.id == sessionStorage.getItem("id"))[0].courses;
-    if(ret == null){
-        ret = localStorage.getItem(sessionStorage.getItem("id")).courses;
+export function AddCourse(e){
+    let id = sessionStorage.getItem("id");
+    if( id == null) return null;
+    let user = JSON.parse(localStorage.getItem(id));
+    let targ = e["target"];
+    while(targ["className"] != "course-info-container"){
+        targ = targ.parentNode;
     }
-    //console.log(ret);
-    return ret;
-}
+    let code = targ.childNodes[1].innerHTML;
 
-export function GetEnrolled(CODE){
-    let ret = courses.filter((o)=>o.code == CODE)[0].enrolled;
-    //console.log(ret);
+    let check = user.courses.filter(c=>c.code == code);
+    console.log(check);
+    if( check.length == 0) {
+        user.courses.push(GetCourse(code));
+        console.log("added course");
+        localStorage.removeItem(id);
+        localStorage.setItem(id,JSON.stringify(user));
+    } else {
+        console.log("course exists");  
+    }
+    
+}
+export function GetCourse(CODE){
+    let ret = courses.filter((o)=>o.code == CODE)[0];
     return ret;
 }

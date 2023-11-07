@@ -3,11 +3,11 @@ import '../css/myCourses.css'
 import { useState } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
-import { GetCourses } from "./DataManagement";
+import { GetUserValue } from "./DataManagement";
 
 function MyCourses() {
 
-  const userCourses = GetCourses();
+  const userCourses = GetUserValue("courses");
 
   const [courseList, setCourseList] = useState(userCourses);
 
