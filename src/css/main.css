@@ -44,7 +44,7 @@ img {
   background-image: url("../img/background.jpeg");
   background-size: cover;
   /* height: 90vh; */
-  height: calc(100vh - 55px - 95px);
+  height: calc(100vh - 55px - 93px);
   width: 100%;
   display: flex;
   align-items: center;

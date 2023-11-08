@@ -19,6 +19,7 @@ export function NavBar() {
                         {sessionStorage.getItem("id") != null ? <li><a href="/MyCourses">My Courses</a></li> : ''}
                         {GetUserValue("program") == "Admin" ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
                         {GetUserValue("program") == "Admin" ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
+                        {GetUserValue("program") == "Admin" ? <li><a href="/Messages">Messages</a></li> : ''}
                         <li><a href="/Contact">Contact Us</a></li>
                         {sessionStorage.getItem("id") !== null ? <li><button onClick={Logout}>Logout</button></li> : ''}
                     </ul>

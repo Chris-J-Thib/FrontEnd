@@ -10,6 +10,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import userData from "./databases/users.json";
 import courseData from "./databases/courses.json";
+import MessagesPage from "./pages/MessagesPage.js";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/AdminAddCourses" element={<AdminAddCourses />} />
           <Route path="/Contact" element={<ContactUsPage />} />
           <Route path="/MyCourses" element={<MyCoursesPage />} />
+          <Route path="/Messages" element={<MessagesPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

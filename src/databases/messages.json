@@ -1,0 +1,56 @@
+[
+  {
+    "userId": "1",
+    "userFullName": "John Doe",
+    "userEmail": "johndoe@example.com",
+    "userPhone": "555-0100",
+    "userDepartment": "Software Development",
+    "userProgram": "Certificate",
+    "question": "What languages will we cover in the training?"
+  },
+  {
+    "userId": "2",
+    "userFullName": "Jane Smith",
+    "userEmail": "janesmith@example.com",
+    "userPhone": "555-0101",
+    "userDepartment": "Software Development",
+    "userProgram": "Diploma",
+    "question": "Is there a part-time schedule available?"
+  },
+  {
+    "userId": "3",
+    "userFullName": "Alice Johnson",
+    "userEmail": "alicejohnson@example.com",
+    "userPhone": "555-0102",
+    "userDepartment": "Software Development",
+    "userProgram": "Post-Diploma",
+    "question": "Can I work while studying for the Post-Diploma?"
+  },
+  {
+    "userId": "4",
+    "userFullName": "Michael Brown",
+    "userEmail": "michaelbrown@example.com",
+    "userPhone": "555-0103",
+    "userDepartment": "Software Development",
+    "userProgram": "Certificate",
+    "question": "Are there any prerequisites for the Certificate program?"
+  },
+  {
+    "userId": "5",
+    "userFullName": "Emily White",
+    "userEmail": "emilywhite@example.com",
+    "userPhone": "555-0104",
+    "userDepartment": "Software Development",
+    "userProgram": "Diploma",
+    "question": "What is the project submission deadline?"
+  },
+  {
+    "userId": "6",
+    "userFullName": "Daniel Green",
+    "userEmail": "danielgreen@example.com",
+    "userPhone": "555-0105",
+    "userDepartment": "Software Development",
+    "userProgram": "Post-Diploma",
+    "question": "Do you offer any scholarships for the Post-Diploma program?"
+  }
+]
