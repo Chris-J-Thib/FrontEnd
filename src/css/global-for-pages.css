@@ -1,18 +1,17 @@
 body {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
 }
 
 .flex-container {
-    display: flex;
-    flex: 1; /* take all the available space */
-    background-color: #ffffff;
-    /* padding: 10px; */
-    height: calc(100vh - 55px - 95px); /* 60px for header and 40px for footer */
-    overflow-y: auto; /*if the content is larger than the space */
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex: 1; /* take all the available space */
+  background-color: #ffffff;
+  /* padding: 10px; */
+  height: calc(100vh - 60px - 100px); /* 60px for header and 40px for footer */
+  overflow-y: auto; /*if the content is larger than the space */
+  align-items: center;
+  justify-content: center;
 }
-
