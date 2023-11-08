@@ -1,5 +1,5 @@
 import { Footer, NavBar } from "../components/PageComponents";
-import QuestionForm from '../components/ContactUsForm'
+import ContactUsForm from '../components/ContactUsForm'
 import '../css/global-for-pages.css'
 
 function ContactUsPage() {
@@ -7,7 +7,7 @@ function ContactUsPage() {
     <div className="Auth">
       <NavBar />
       <div className="flex-container">
-        < QuestionForm />
+        < ContactUsForm />
       </div>
       <Footer />
     </div>

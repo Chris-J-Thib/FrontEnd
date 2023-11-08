@@ -4,7 +4,7 @@ import '../css/contactUsForm.css';
 
 function ContactUsForm() {
   //user logged in
-  let userId = sessionStorage.getItem("id");
+  let userId = '';
   let userFullName = '';
   let userEmail = '';
   let userPhone = '';
@@ -14,16 +14,18 @@ function ContactUsForm() {
     //retrieve user info from local storage
     for(let i = 0; i < localStorage.length; i++){
       let userOnDDBB = JSON.parse(localStorage.getItem(i));
-          if(userOnDDBB.id == userId){
-            userFullName = userOnDDBB.firstName + " " + userOnDDBB.lastName;
-            userEmail = userOnDDBB.email;
-            userPhone = userOnDDBB.phone;
-            userDepartment = userOnDDBB.department;
-            userProgram = userOnDDBB.program;
-          } 
+      
+      if(userOnDDBB.id == sessionStorage.getItem("id")){
+        userId = sessionStorage.getItem("id");
+        userFullName = userOnDDBB.firstName + " " + userOnDDBB.lastName;
+        userEmail = userOnDDBB.email;
+        userPhone = userOnDDBB.phone;
+        userDepartment = userOnDDBB.department;
+        userProgram = userOnDDBB.program;
+      }
     }
 
-  const [message, setMessage] = useState({ userFullName:userFullName, userEmail:userEmail, userPhone:userPhone, userDepartment:userDepartment, userProgram:userProgram, question:"" });
+  const [message, setMessage] = useState({ userId:userId, userFullName:userFullName, userEmail:userEmail, userPhone:userPhone, userDepartment:userDepartment, userProgram:userProgram, question:"" });
 
   const handleNameChange = (event) => {
     setMessage({...message, userFullName:event.target.value});
