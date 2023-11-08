@@ -1,8 +1,8 @@
 body {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
 }
 
 .flex-container {
@@ -15,4 +15,3 @@ body {
     align-items: center;
     justify-content: center;
 }
-
