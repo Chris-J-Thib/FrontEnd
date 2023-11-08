@@ -1,6 +1,6 @@
 import React from "react";
 import Course from './Course';
-import { AddCourse } from "./DataManagement";
+import { AddCourse, DropCourse, GetUserValue } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
@@ -17,7 +17,18 @@ function CourseList (props) {
           image={require(`../${course.imageURL}`)}>
             <div>
             {props.student ? (
-              <button onClick={AddCourse}>Enroll</button>
+
+              GetUserValue("courses").filter(c=>c.code == course.code).length != 0 ? (
+                <>
+                <button onClick={DropCourse}>Drop</button>
+                </>
+              ) : (
+                <>
+                <button onClick={AddCourse}>Enroll</button>
+                </>
+              )
+
+              
             ) : (
               <>
                 <button>View</button>

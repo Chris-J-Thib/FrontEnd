@@ -63,26 +63,48 @@ export function GetUserValue(value){
 export function AddCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
+
     let user = JSON.parse(localStorage.getItem(id));
     let targ = e["target"];
-    while(targ["className"] != "course-info-container"){
-        targ = targ.parentNode;
-    }
-    let code = targ.childNodes[1].innerHTML;
+    while(targ["className"] != "course-info-container") targ = targ.parentNode;
 
+    let code = targ.childNodes[1].innerHTML;
     let check = user.courses.filter(c=>c.code == code);
-    console.log(check);
+
     if( check.length == 0) {
         user.courses.push(GetCourse(code));
         console.log("added course");
         localStorage.removeItem(id);
         localStorage.setItem(id,JSON.stringify(user));
-    } else {
-        console.log("course exists");  
-    }
-    
+    } else console.log("course exists");     
 }
+
+export function DropCourse(e){
+    let id = sessionStorage.getItem("id");
+    if( id == null) return null;
+
+    let user = JSON.parse(localStorage.getItem(id));
+    let targ = e["target"];
+    while(targ["className"] != "course-info-container") targ = targ.parentNode;
+
+    let code = targ.childNodes[1].innerHTML;
+    let check = user.courses.filter(c=>c.code == code);
+
+    let index = user.courses.findIndex(i=>i==check[0]);
+    if (index >= 0){
+        user.courses.splice(index,1);
+        localStorage.removeItem(id);
+        localStorage.setItem(id,JSON.stringify(user));
+        window.location.reload();      
+        console.log("dropped course");
+    }
+}
+
 export function GetCourse(CODE){
     let ret = courses.filter((o)=>o.code == CODE)[0];
     return ret;
+}
+
+export function GetCourseData(CODE, value){
+    return GetCourse(CODE)[value];
 }

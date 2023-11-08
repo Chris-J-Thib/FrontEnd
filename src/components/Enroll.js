@@ -4,6 +4,7 @@ import { useState } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
 import courses from '../databases/courses.json'
+import { GetCourseData } from './DataManagement';
 
 function Enroll() {
 

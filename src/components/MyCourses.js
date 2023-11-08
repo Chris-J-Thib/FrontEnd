@@ -30,7 +30,7 @@ function MyCourses() {
             handleSearch={handleSearch} />
         </div>
         <div className="courses-section">
-          <CourseList courses={courseList} student={true}/>
+          <CourseList courses={courseList} student={true} enrolled={true}/>
         </div>
     </div>
   );

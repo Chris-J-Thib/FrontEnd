@@ -4,9 +4,11 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-users.forEach(u => {
-    localStorage.setItem(u.id,JSON.stringify(u))
-})
+if(localStorage.length == 0){
+    users.forEach(u => {
+        localStorage.setItem(u.id,JSON.stringify(u))
+    })
+}
 
 
 root.render(
