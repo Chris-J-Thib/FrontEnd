@@ -1,25 +1,28 @@
 import courses from "../databases/courses.json";
+import usersData from "../databases/users.json";
 
 export function SignIn(){
     sessionStorage.clear();
-    let user = document.getElementById('user').value;
+    let un = document.getElementById('user').value;
     let pw = document.getElementById('password').value;
     let st = document.getElementById('status');
 
-    for(let i = 0; i < localStorage.length; i++){
-        let o = JSON.parse(localStorage.getItem(i));
-        if(o.email == user || o.username == user){
-            if(o.password == pw){
-                sessionStorage.setItem("id",o.id);
+    let users = JSON.parse(localStorage.getItem("users"));
+    for (let key = 0; key < Object.keys(users).length; key++){
+        let u = users[key];
+        if(u.username == un || u.email == un){
+            if(u.password == pw){
+                sessionStorage.setItem("id", u.id);
                 window.location.href = '/';
-                break;
+                return;
             } else {
-                st.innerText = "Incorrect Password.\n"
-                break;
+                st.innerText = 'Inncorrect Passowrd\n';
+                return;
             }
-        } else st.innerText = "User does not exist.\n";
+        }
     }
 
+    st.innerText = 'User not found\n';
 }
 
 export function SignUp(){
@@ -35,10 +38,10 @@ export function SignUp(){
         "program": document.getElementById("prgm").value,
         "username": document.getElementById("username").value,
         "password": document.getElementById("password").value,
-        "id": localStorage.length,
+        "id": localStorage["users"].length,
         "courses": []
     }
-    localStorage.setItem(newUser.id,JSON.stringify(newUser));
+    //localStorage.setItem(newUser.id,JSON.stringify(newUser));
     sessionStorage.setItem("id",newUser.id);
     console.log(newUser);
     window.location.href = "/";
@@ -49,12 +52,33 @@ export function Logout() {
     window.location.href = "/";
 }
 
+export function GetUser(id){
+    let ret = JSON.parse(localStorage.getItem("users"))[id];
+    //console.log(JSON.stringify(ret));
+    return ret;
+}
+
+//takes an array of users in json format and adds them.
+export function SetUsers(users){
+    var dict;
+    dict = localStorage.getItem("users");
+    if(dict != null){
+        dict = JSON.parse(dict);
+        localStorage.removeItem("users");
+    } else dict = new Object();
+    users.forEach(u=>{
+        dict[u.id] = u;
+    })
+    console.log(dict);
+    localStorage.setItem("users",JSON.stringify(dict));
+}
+
 export function GetUserValue(value){
     let id = sessionStorage.getItem("id");
     if( id == null){
         return null;
     } else {
-        let ret = JSON.parse(localStorage.getItem(id))[value];
+        let ret = JSON.parse(localStorage.getItem("users"))[id][value];
         return ret;
     }
     
@@ -64,7 +88,7 @@ export function AddCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
 
-    let user = JSON.parse(localStorage.getItem(id));
+    let user = GetUser(id);
     let targ = e["target"];
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
 
@@ -74,8 +98,7 @@ export function AddCourse(e){
     if( check.length == 0) {
         user.courses.push(GetCourse(code));
         console.log("added course");
-        localStorage.removeItem(id);
-        localStorage.setItem(id,JSON.stringify(user));
+        SetUsers([user]);
     } else console.log("course exists");     
 }
 
@@ -83,7 +106,7 @@ export function DropCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
 
-    let user = JSON.parse(localStorage.getItem(id));
+    let user = GetUser(id);
     let targ = e["target"];
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
 
@@ -93,8 +116,7 @@ export function DropCourse(e){
     let index = user.courses.findIndex(i=>i==check[0]);
     if (index >= 0){
         user.courses.splice(index,1);
-        localStorage.removeItem(id);
-        localStorage.setItem(id,JSON.stringify(user));
+        SetUsers([user]);
         window.location.reload();      
         console.log("dropped course");
     }
