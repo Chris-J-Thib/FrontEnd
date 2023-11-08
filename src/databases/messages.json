@@ -1,5 +1,6 @@
 [
   {
+    "messageId": "1",
     "userId": "1",
     "userFullName": "John Doe",
     "userEmail": "johndoe@example.com",
@@ -9,6 +10,7 @@
     "question": "What languages will we cover in the training?"
   },
   {
+    "messageId": "2",
     "userId": "2",
     "userFullName": "Jane Smith",
     "userEmail": "janesmith@example.com",
@@ -18,6 +20,7 @@
     "question": "Is there a part-time schedule available?"
   },
   {
+    "messageId": "3",
     "userId": "3",
     "userFullName": "Alice Johnson",
     "userEmail": "alicejohnson@example.com",
@@ -27,6 +30,7 @@
     "question": "Can I work while studying for the Post-Diploma?"
   },
   {
+    "messageId": "4",
     "userId": "4",
     "userFullName": "Michael Brown",
     "userEmail": "michaelbrown@example.com",
@@ -36,6 +40,7 @@
     "question": "Are there any prerequisites for the Certificate program?"
   },
   {
+    "messageId": "5",
     "userId": "5",
     "userFullName": "Emily White",
     "userEmail": "emilywhite@example.com",
@@ -45,6 +50,7 @@
     "question": "What is the project submission deadline?"
   },
   {
+    "messageId": "6",
     "userId": "6",
     "userFullName": "Daniel Green",
     "userEmail": "danielgreen@example.com",
