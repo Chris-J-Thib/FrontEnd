@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../css/adminAddCourses.css'
-
+import "../css/contactUsForm.css";
 const AdminAddCourses = {
     code: '',
     name: '',
@@ -26,7 +26,7 @@ const AddCoursesForm = ({ AddCorses }) => {
     };
 
     return (
-        <div>
+        <div className="question-form-container">
             <h1>Add Courses</h1>
             <form onSubmit={handleSubmit}>
                 <label>Code</label>
