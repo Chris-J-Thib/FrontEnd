@@ -39,7 +39,7 @@ export function SignUp(){
         program: document.getElementById("program").value,
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
-        id: JSON.parse(localStorage["users"]).length,
+        id: Object.keys(JSON.parse(localStorage.getItem("users"))).length,
         courses: []
     }
     

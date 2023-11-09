@@ -35,7 +35,7 @@ function SignUpForm() {
         <input type="password" id="password" placeholder="password" />
 
         <div className='sign-up-button-section'>
-          <button type="reset" enabled="false" onClick={SignUp}>Sign Up</button>
+          <button type="button" onClick={SignUp}>Sign Up</button>
         </div>
       </form>
       <div className="login-section">
