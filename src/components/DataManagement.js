@@ -26,7 +26,7 @@ export function SignIn(){
 }
 
 export function SignUp(){
-    if(GetUserValue("id") != null) return;
+    if(sessionStorage.getItem("id") != null) return;
 
     let newUser = {
         "firstName": document.getElementById("firstName").value,
