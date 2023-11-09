@@ -18,12 +18,12 @@ function SignUpForm() {
         <label htmlFor="dob">Birthday:</label>
         <input type="date" id='dob' />
 
-        <select name="Department" id="dpt">
+        <select name="Department" id="department">
           <option value="" disabled selected hidden>Department</option>
           <option value="SD">Software Development</option>
         </select>
 
-        <select name="Program" id="prgm">
+        <select name="Program" id="program">
           <option value="" disabled selected hidden>Program</option>
           <option>Certificate</option>
           <option>Diploma</option>
@@ -35,7 +35,7 @@ function SignUpForm() {
         <input type="password" id="password" placeholder="password" />
 
         <div className='sign-up-button-section'>
-          <button type="reset" onClick={SignUp}>Sign Up</button>
+          <button type="reset" enabled="false" onClick={SignUp}>Sign Up</button>
         </div>
       </form>
       <div className="login-section">

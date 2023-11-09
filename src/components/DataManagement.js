@@ -27,24 +27,42 @@ export function SignIn(){
 
 export function SignUp(){
     if(sessionStorage.getItem("id") != null) return;
+    let filled = true;
 
     let newUser = {
-        "firstName": document.getElementById("firstName").value,
-        "lastName": document.getElementById("lastName").value,
-        "email": document.getElementById("email").value,
-        "phone": document.getElementById("phone").value,
-        "dob": document.getElementById("dob").value,
-        "department": document.getElementById("dpt").value,
-        "program": document.getElementById("prgm").value,
-        "username": document.getElementById("username").value,
-        "password": document.getElementById("password").value,
-        "id": localStorage["users"].length,
-        "courses": []
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        dob: document.getElementById("dob").value,
+        department: document.getElementById("department").value,
+        program: document.getElementById("program").value,
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+        id: JSON.parse(localStorage["users"]).length,
+        courses: []
     }
-    //localStorage.setItem(newUser.id,JSON.stringify(newUser));
-    sessionStorage.setItem("id",newUser.id);
-    console.log(newUser);
-    window.location.href = "/";
+    
+    //check to make sure all fields are filled
+    Object.keys(newUser).forEach(key=>{
+        if(key.toString() != "id" && key.toString() != "courses"){
+            if(newUser[key]==""){
+                document.getElementById(key.toString()).style.border = "2px solid red";
+                filled=false;
+            } else {
+                document.getElementById(key.toString()).style.border = "";
+            }
+        }
+    })
+
+    if(filled){
+        SetUsers([newUser]);
+        sessionStorage.setItem("id",newUser.id);
+        console.log('created '+newUser);
+        window.location.href = "/";
+    } else {
+        //add message saying to fill fields....
+    }
 }
 
 export function Logout() {
