@@ -29,6 +29,8 @@ export function SignUp(){
     if(sessionStorage.getItem("id") != null) return;
     let filled = true;
 
+    //ADD check to ensure diffrent UN and Email here...
+
     let newUser = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
@@ -58,7 +60,7 @@ export function SignUp(){
     if(filled){
         SetUsers([newUser]);
         sessionStorage.setItem("id",newUser.id);
-        console.log('created '+newUser);
+        console.log('created '+ JSON.stringify(newUser));
         window.location.href = "/";
     } else {
         //add message saying to fill fields....
@@ -111,8 +113,9 @@ export function AddCourse(e){
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
 
     let code = targ.childNodes[1].innerHTML;
+    //HERE is where the change needs to be made for course list on user
     let check = user.courses.filter(c=>c.code == code);
-
+    
     if( check.length == 0) {
         user.courses.push(GetCourse(code));
         console.log("added course");
@@ -127,12 +130,13 @@ export function AddCourse(e){
 export function DropCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
-
+    
     let user = GetUser(id);
     let targ = e["target"];
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
-
+    
     let code = targ.childNodes[1].innerHTML;
+    //HERE is where the change needs to be made for course list on user
     let check = user.courses.filter(c=>c.code == code);
 
     let index = user.courses.findIndex(i=>i==check[0]);
