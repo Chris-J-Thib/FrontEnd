@@ -1,5 +1,6 @@
-import courses from "../databases/courses.json";
+import coursesData from "../databases/courses.json";
 import usersData from "../databases/users.json";
+import msgsData from "../databases/messages.json";
 
 export function SignIn(){
     sessionStorage.clear();
@@ -80,6 +81,7 @@ export function GetUser(id){
 
 //takes an array of users in json format and adds them.
 export function SetUsers(users){
+    if(users == null)users = usersData;
     var dict;
     dict = localStorage.getItem("users");
     if(dict != null){
@@ -92,6 +94,16 @@ export function SetUsers(users){
     console.log(dict);
     localStorage.setItem("users",JSON.stringify(dict));
 }
+
+export function SetMsgs(msgs){
+    if(msgs == null)msgs = msgsData;
+    var dict = new Object();
+    msgs.forEach(m=>{
+        dict[m.messageId] = m;
+    })
+    localStorage.setItem("msgs",JSON.stringify(dict));
+}
+
 
 export function GetUserValue(value){
     let id = sessionStorage.getItem("id");
@@ -150,7 +162,7 @@ export function DropCourse(e){
 }
 
 export function GetCourse(CODE){
-    let ret = courses.filter((o)=>o.code == CODE)[0];
+    let ret = coursesData.filter((o)=>o.code == CODE)[0];
     return ret;
 }
 
@@ -191,7 +203,7 @@ export function AdminDeleteCourse(e) {
     let code = targ.childNodes[1].innerHTML;
 
     alert('Course: ' + code + ', deleted');
-    let course = courses.filter((c)=>c.code == code)[0];
+    let course = coursesData.filter((c)=>c.code == code)[0];
 
     console.log('Course to be deleted:');
     console.log(course);

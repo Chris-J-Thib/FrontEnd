@@ -8,8 +8,6 @@ import AdminCheckCoursesPage from "./pages/AdminCheckCoursesPage";
 import AdminAddCourses from "./pages/AdminAddCoursePage";
 import ContactUsPage from "./pages/ContactUsPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
-import userData from "./databases/users.json";
-import courseData from "./databases/courses.json";
 import MessagesPage from "./pages/MessagesPage.js";
 
 
