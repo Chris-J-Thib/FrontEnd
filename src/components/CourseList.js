@@ -1,6 +1,6 @@
 import React from "react";
 import Course from './Course';
-import { AddCourse, DropCourse, GetUserValue } from "./DataManagement";
+import { AddCourse, DropCourse, GetUserValue, ViewStudentsOnCourse, AdminDeleteCourse } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
@@ -31,8 +31,8 @@ function CourseList (props) {
               
             ) : (
               <>
-                <button>View</button>
-                <button>Delete</button>
+                <button onClick={ViewStudentsOnCourse}>View</button>
+                <button onClick={AdminDeleteCourse}>Delete</button>
               </>
             )}
             </div>

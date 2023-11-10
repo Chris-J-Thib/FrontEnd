@@ -117,7 +117,11 @@ export function AddCourse(e){
         user.courses.push(GetCourse(code));
         console.log("added course");
         SetUsers([user]);
-    } else console.log("course exists");     
+        alert("Course added")
+    } else {
+        alert("Already enrolled in course");
+        console.log("course exists")
+    };     
 }
 
 export function DropCourse(e){
@@ -135,6 +139,7 @@ export function DropCourse(e){
     if (index >= 0){
         user.courses.splice(index,1);
         SetUsers([user]);
+        alert("Course dropped");
         window.location.reload();      
         console.log("dropped course");
     }
@@ -147,4 +152,43 @@ export function GetCourse(CODE){
 
 export function GetCourseData(CODE, value){
     return GetCourse(CODE)[value];
+}
+
+//For admin view students on a course and delete te course
+export function ViewStudentsOnCourse(e){
+    let users = JSON.parse(localStorage.getItem("users"));
+    let studentsEnrolled = [];
+    for (let key = 0; key < Object.keys(users).length; key++){
+        let u = users[key];
+        let id = u.id;
+        let user = GetUser(id);
+        let targ = e["target"];
+        while(targ["className"] != "course-info-container") targ = targ.parentNode;
+    
+        let code = targ.childNodes[1].innerHTML;
+        let check = user.courses.filter(c=>c.code == code);
+    
+        // console.log(user);
+        // console.log(check);
+        // console.log('-----------------');
+        if( check.length > 0) {
+            studentsEnrolled.push(user);
+        }     
+    }
+    let namesStudentsEnrolled = studentsEnrolled.map((student) => student.firstName + " " + student.lastName + '\n');
+    alert("Students enrolled:\n" + namesStudentsEnrolled);
+    console.log(studentsEnrolled);
+}
+
+//in shows the course to be deleted in the console and as an alert. it does not delete the course because react cannot modify the json file
+export function AdminDeleteCourse(e) {
+    let targ = e["target"];
+    while(targ["className"] != "course-info-container") targ = targ.parentNode;
+    let code = targ.childNodes[1].innerHTML;
+
+    alert('Course: ' + code + ', deleted');
+    let course = courses.filter((c)=>c.code == code)[0];
+
+    console.log('Course to be deleted:');
+    console.log(course);
 }
