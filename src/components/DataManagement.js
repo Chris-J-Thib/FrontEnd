@@ -2,28 +2,34 @@ import coursesData from "../databases/courses.json";
 import usersData from "../databases/users.json";
 import msgsData from "../databases/messages.json";
 
-export function SignIn(){
+ function home(){
+    window.location.href = "/";
+}
+
+export async function SignIn(){
     sessionStorage.clear();
     let un = document.getElementById('user').value;
     let pw = document.getElementById('password').value;
     let st = document.getElementById('status');
 
-    let users = JSON.parse(localStorage.getItem("users"));
-    for (let key = 0; key < Object.keys(users).length; key++){
-        let u = users[key];
-        if(u.username == un || u.email == un){
-            if(u.password == pw){
-                sessionStorage.setItem("id", u.id);
-                window.location.href = '/';
-                return;
-            } else {
-                st.innerText = 'Inncorrect Passowrd\n';
-                return;
-            }
-        }
-    }
+    const resp = await fetch('api/login/sign-in',
+        {   method: "POST",
+            headers:    {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+            body: JSON.stringify({username: un,password: pw})
+        });
 
-    st.innerText = 'User not found\n';
+    const user = await resp.json();
+    console.log(user);
+
+    if(user.error == null){
+        sessionStorage.id = user[0].person_id;
+        home();
+    } else {
+        st.innerText = user.error+'\n';
+    }
 }
 
 export function SignUp(){
@@ -62,7 +68,7 @@ export function SignUp(){
         SetUsers([newUser]);
         sessionStorage.setItem("id",newUser.id);
         console.log('created '+ JSON.stringify(newUser));
-        window.location.href = "/";
+        home();
     } else {
         //add message saying to fill fields....
     }
@@ -70,13 +76,7 @@ export function SignUp(){
 
 export function Logout() {
     sessionStorage.clear();
-    window.location.href = "/";
-}
-
-export function GetUser(id){
-    let ret = JSON.parse(localStorage.getItem("users"))[id];
-    //console.log(JSON.stringify(ret));
-    return ret;
+    home();
 }
 
 //takes an array of users in json format and adds them.
@@ -105,13 +105,19 @@ export function SetMsgs(msgs){
 }
 
 
-export function GetUserValue(value){
-    let id = sessionStorage.getItem("id");
+export function GetUserValue(value, id = sessionStorage.getItem("id")){
+    console.log(`ID = ${id}`)
     if( id == null){
+        console.log(`Returning Null`);
         return null;
     } else {
-        let ret = JSON.parse(localStorage.getItem("users"))[id][value];
-        return ret;
+        fetch(`api/login/user_info?person_id=${id}`)
+        .then(resp => resp.json().then( data =>{
+            console.log(data);
+            if(value == '*') return data[0];
+            return data[0][value];
+        }));
+        
     }
     
 }
@@ -120,7 +126,7 @@ export function AddCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
 
-    let user = GetUser(id);
+    let user = GetUserValue('*');
     let targ = e["target"];
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
 
@@ -143,7 +149,7 @@ export function DropCourse(e){
     let id = sessionStorage.getItem("id");
     if( id == null) return null;
     
-    let user = GetUser(id);
+    let user = GetUserValue('*');
     let targ = e["target"];
     while(targ["className"] != "course-info-container") targ = targ.parentNode;
     
@@ -177,7 +183,7 @@ export function ViewStudentsOnCourse(e){
     for (let key = 0; key < Object.keys(users).length; key++){
         let u = users[key];
         let id = u.id;
-        let user = GetUser(id);
+        let user = GetUserValue('*');
         let targ = e["target"];
         while(targ["className"] != "course-info-container") targ = targ.parentNode;
     

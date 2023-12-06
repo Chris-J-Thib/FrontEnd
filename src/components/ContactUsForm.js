@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import '../css/contactUsForm.css';
-import { GetUser } from "./DataManagement";
+import { GetUserValue } from "./DataManagement";
 
 function ContactUsForm() {
   //user logged in
@@ -10,20 +10,19 @@ function ContactUsForm() {
   let userEmail = '';
   let userPhone = '';
   let userDepartment = '';
-  let userProgram = '';
+  let userProgram = '';  
 
-  
   //if user is signed in populate fields
   if (sessionStorage.getItem("id") != null) {
-    let userOnDDBB = GetUser(sessionStorage.getItem("id"));
-    userId = sessionStorage.getItem("id");
-    userFullName = userOnDDBB.firstName + " " + userOnDDBB.lastName;
-    userEmail = userOnDDBB.email;
-    userPhone = userOnDDBB.phone;
-    userDepartment = userOnDDBB.department;
-    userProgram = userOnDDBB.program;
+      const userOnDB = GetUserValue('*');
+      console.log(userOnDB);
+      userId = sessionStorage.getItem("id");
+      userFullName = userOnDB["first_name"] + " " + userOnDB["last_name"];
+      userEmail = userOnDB["email"];
+      userPhone = userOnDB["phone"];
+      userDepartment = userOnDB["program"];
+      userProgram = userOnDB["program_type_name"];
   }
-  
 
   const [message, setMessage] = useState({ userId: userId, userFullName: userFullName, userEmail: userEmail, userPhone: userPhone, userDepartment: userDepartment, userProgram: userProgram, question: "" });
 
