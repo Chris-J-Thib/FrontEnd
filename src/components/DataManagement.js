@@ -105,18 +105,17 @@ export function SetMsgs(msgs){
 }
 
 
-export function GetUserValue(value, id = sessionStorage.getItem("id")){
+export async function GetUserValue(value, id = sessionStorage.getItem("id")){
     console.log(`ID = ${id}`)
     if( id == null){
         console.log(`Returning Null`);
         return null;
     } else {
-        fetch(`api/login/user_info?person_id=${id}`)
-        .then(resp => resp.json().then( data =>{
-            console.log(data);
-            if(value == '*') return data[0];
-            return data[0][value];
-        }));
+        const resp = await fetch(`api/login/user_info?person_id=${id}`)
+        const data = await resp.json();
+        console.log(data);
+        if(value == '*') return data[0];
+        return data[0][value];
         
     }
     
@@ -167,9 +166,8 @@ export function DropCourse(e){
     }
 }
 
-export function GetCourse(CODE){
-    let ret = coursesData.filter((o)=>o.code == CODE)[0];
-    return ret;
+export async function GetCourse(CODE){
+    return await fetch();
 }
 
 export function GetCourseData(CODE, value){
