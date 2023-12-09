@@ -1,14 +1,19 @@
 import React from 'react';
 import '../css/enroll.css'
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
-import courses from '../databases/courses.json'
-import { GetCourseData } from './DataManagement';
+import { GetAllCourses } from './DataManagement';
 
 function Enroll() {
 
-  const [courseList, setCourseList] = useState(courses);
+   useEffect(()=>{
+    GetAllCourses().then((x)=>{
+        setCourseList(x);
+      });
+  },[]);
+
+  const [courseList, setCourseList] = useState([]);
 
 
   const handleSearch=(e)=>{
@@ -18,7 +23,7 @@ function Enroll() {
     const courseName = e.target[0].value
     const courseCode = e.target[1].value
 
-    setCourseList(courses.filter(course => 
+    setCourseList(courseList.filter(course => 
       course.name.includes(courseName) && course.code.includes(courseCode)
     ));
   } 

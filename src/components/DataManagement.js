@@ -116,7 +116,7 @@ export function SetMsgs(msgs){
     localStorage.setItem("msgs",JSON.stringify(dict));
 }
 
-
+///This function is taxing on the DB pref use other
 export async function GetUserValue(value, id = sessionStorage.getItem("id")){
     if( id == null){
         console.log(`Returning Null`);
@@ -178,12 +178,22 @@ export function DropCourse(e){
     }
 }
 
+export async function GetUserCourses(){
+    const resp = await fetch('api/student/my-courses?person_id='+sessionStorage.id);
+    return await resp.json();
+}
+
 export async function GetCourse(CODE){
     return await fetch();
 }
 
 export function GetCourseData(CODE, value){
     return GetCourse(CODE)[value];
+}
+
+export async function GetAllCourses(){
+    const resp = await fetch('api/admin/get-all-courses');
+    return await resp.json()
 }
 
 //For admin view students on a course and delete te course

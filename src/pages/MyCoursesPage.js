@@ -4,7 +4,7 @@ import '../css/global-for-pages.css'
 
 
 function MyCoursesPage() {
-    return (
+     return (
         <div>
             <NavBar/>
                 <div className="flex-container">

@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Course from './Course';
-import { AddCourse, DropCourse, GetUserValue, ViewStudentsOnCourse, AdminDeleteCourse } from "./DataManagement";
+import { AddCourse, DropCourse, GetUserValue, ViewStudentsOnCourse, AdminDeleteCourse, GetUserCourses } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
+
+  useEffect(()=>{
+    GetUserCourses().then((x)=>{
+        setCourseList(x);
+      });
+  });
+
+  const [userCourses, setCourseList] = useState([]);
+
   return (
     <div>
-      {props.courses.map(course => (
+      {
+      props.courses.map(course => (
         <div>
         <Course
           name={course.name}
           code={course.code}
           description={course.description}
-          startingDate={course.startDate}
-          endingDate={course.endDate}
-          image={require(`../${course.imageURL}`)}>
+          startingDate={course.start_date}
+          endingDate={course.end_date}
+          image={course.img}>
             <div>
             {props.student ? (
-
-              GetUserValue("courses").filter(c=>c.code == course.code).length != 0 ? (
+              
+              userCourses.filter(c=>c.code == course.code).length != 0 ? (
                 <>
                 <button onClick={DropCourse}>Drop</button>
                 </>

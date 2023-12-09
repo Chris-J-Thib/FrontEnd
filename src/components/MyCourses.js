@@ -1,27 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../css/myCourses.css'
-import { useState } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
-import { GetUserValue } from "./DataManagement";
+import { GetUserCourses } from "./DataManagement";
 
 function MyCourses() {
 
-  const userCourses = GetUserValue("courses");
+  useEffect(()=>{
+    GetUserCourses().then((x)=>{
+        setCourseList(x);
+      });
+  },[]);
+  
+  
 
-  const [courseList, setCourseList] = useState(userCourses);
 
+  const [courseList, setCourseList] = useState([]);
+  
   const handleSearch=(e)=>{
     e.preventDefault()
-
+    
     console.log('Searching...')
     const courseName = e.target[0].value
     const courseCode = e.target[1].value
-
-    setCourseList(userCourses.filter(course => 
-      course.name.includes(courseName) && course.code.includes(courseCode)
-    ));
-  } 
+    const newList = courseList.filter(course => 
+      course.name.includes(courseName) && course.code.includes(courseCode));
+    setCourseList(newList);
+    }
 
   return (
     <div className="main-container-my-courses">
@@ -30,7 +35,7 @@ function MyCourses() {
             handleSearch={handleSearch} />
         </div>
         <div className="courses-section">
-          <CourseList courses={courseList} student={true} enrolled={true}/>
+          {<CourseList courses={courseList} student={true} enrolled={true}/>}
         </div>
     </div>
   );
