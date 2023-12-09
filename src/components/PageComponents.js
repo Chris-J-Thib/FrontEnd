@@ -29,6 +29,7 @@ export function NavBar() {
     )
 }
 
+
 export function Footer() {
     return (
         <div className="footer">

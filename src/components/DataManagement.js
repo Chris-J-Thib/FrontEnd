@@ -6,6 +6,11 @@ import msgsData from "../databases/messages.json";
     window.location.href = "/";
 }
 
+export async function GetDepartments(){
+    const resp = await fetch('api/admin/get-departments');
+    return await resp.json();
+}
+
 export async function SignIn(){
     sessionStorage.clear();
     let un = document.getElementById('user').value;
@@ -32,29 +37,29 @@ export async function SignIn(){
     }
 }
 
-export function SignUp(){
+export async function SignUp(){
     if(sessionStorage.getItem("id") != null) return;
     let filled = true;
 
     //ADD check to ensure diffrent UN and Email here...
 
     let newUser = {
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value,
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
-        dob: document.getElementById("dob").value,
-        department: document.getElementById("department").value,
-        program: document.getElementById("program").value,
+        birthday: document.getElementById("birthday").value,
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
-        id: Object.keys(JSON.parse(localStorage.getItem("users"))).length,
+        is_admin: 0,//Change via DB if a user is an admin.
+        department: document.getElementById("department").value,
+        program: document.getElementById("program").value,
         courses: []
     }
     
     //check to make sure all fields are filled
     Object.keys(newUser).forEach(key=>{
-        if(key.toString() != "id" && key.toString() != "courses"){
+        if(key.toString() != "courses" && key.toString() != "is_admin"){
             if(newUser[key]==""){
                 document.getElementById(key.toString()).style.border = "2px solid red";
                 filled=false;
@@ -65,13 +70,20 @@ export function SignUp(){
     })
 
     if(filled){
-        SetUsers([newUser]);
-        sessionStorage.setItem("id",newUser.id);
-        console.log('created '+ JSON.stringify(newUser));
-        home();
-    } else {
-        //add message saying to fill fields....
-    }
+        console.log(newUser);
+        const resp = await fetch(
+                    'api/student/sign-up',{
+                        method: "POST",
+                        headers:{
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(newUser)
+                    })
+        const data = await resp.json();
+        console.log("data= "+data);
+        //home();
+    } 
 }
 
 export function Logout() {
@@ -106,14 +118,14 @@ export function SetMsgs(msgs){
 
 
 export async function GetUserValue(value, id = sessionStorage.getItem("id")){
-    console.log(`ID = ${id}`)
     if( id == null){
         console.log(`Returning Null`);
         return null;
     } else {
+        //console.log(`ID = ${id}`)
         const resp = await fetch(`api/login/user_info?person_id=${id}`)
         const data = await resp.json();
-        console.log(data);
+        //console.log(data);
         if(value == '*') return data[0];
         return data[0][value];
         
