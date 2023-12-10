@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Course from './Course';
-import { AddCourse, DropCourse, ViewStudentsOnCourse, AdminDeleteCourse, GetUserCourses } from "./DataManagement";
+import { DropCourse, ViewStudentsOnCourse, AdminDeleteCourse, GetUserCourses, EnrollCourse } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
 
   useEffect(()=>{
     GetUserCourses().then((x)=>{
-      console.log(x);
         if(x == null)setCourseList([]);
         setCourseList(x);
-        console.log(courseList);
       });
   },[]);
 
@@ -34,19 +32,19 @@ function CourseList (props) {
               
               courseList.length > 0 && courseList.filter(c=>c.code == course.code).length != 0 ? (
                 <>
-                <button onClick={DropCourse}>Drop</button>
+                <button onClick={(e)=>DropCourse(e)}>Drop</button>
                 </>
               ) : (
                 <>
-                <button onClick={AddCourse}>Enroll</button>
+                <button onClick={(e)=>EnrollCourse(e)}>Enroll</button>
                 </>
               )
 
               
             ) : (
               <>
-                <button onClick={ViewStudentsOnCourse}>View</button>
-                <button onClick={AdminDeleteCourse}>Delete</button>
+                <button onClick={(e)=>ViewStudentsOnCourse(e)}>View</button>
+                <button onClick={(e)=>AdminDeleteCourse(e)}>Delete</button>
               </>
             )}
             </div>

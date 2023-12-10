@@ -1,28 +1,42 @@
-import React, { useState } from "react";
-import '../css/adminAddCourses.css'
+import React, { useState, useEffect } from "react";
+import { AddCourse, GetDepartments } from "./DataManagement";
+import '../css/adminAddCourses.css';
 import "../css/contactUsForm.css";
+import "../css/signUpForm.css";
 const AdminAddCourses = {
     code: '',
     name: '',
-    startDate: '',
-    endDate: '',
-    image: '',
+    start_date: '',
+    end_date: '',
+    img: '',
     description: '',
     term: '',
-    program: ''
+    program_id: ''
 };
 
-const AddCoursesForm = ({ AddCorses }) => {
-    const [courses, setCourses] = useState({ ...AdminAddCourses });
+const AddCoursesForm = () => {
+
+    useEffect(()=>{
+        GetDepartments().then(x=>
+        setDPL(x))
+     },[]);
+
+    const [DPL, setDPL] = useState([]);
+
+    const [course, setCourse] = useState({ ...AdminAddCourses });
 
     const handleInputChange = (e) => {
-        setCourses({ ...courses, [e.target.name]: e.target.value });
+        setCourse({ ...course, [e.target.name]: e.target.value });
+    };
+
+    const handleSelectChange = (e) => {
+        setCourse({ ...course, program_id: e.target.value});
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(courses);
-
+        console.log(course);
+        AddCourse(course);
     };
 
     return (
@@ -33,59 +47,60 @@ const AddCoursesForm = ({ AddCorses }) => {
                 <input
                     type="text"
                     name="code"
-                    value={courses.code}
+                    value={course.code}
                     onChange={handleInputChange}
                 />
                 <label>Name</label>
                 <input
                     type="text"
                     name="name"
-                    value={courses.name}
+                    value={course.name}
                     onChange={handleInputChange}
                 />
                 <label>Start Date</label>
                 <input
                     type="date"
-                    name="startDate"
-                    value={courses.startDate}
+                    name="start_date"
+                    value={course.start_date}
                     onChange={handleInputChange}
                 />
                 <label>End Date</label>
                 <input
                     type="date"
-                    name="endDate"
-                    value={courses.endDate}
+                    name="end_date"
+                    value={course.end_date}
                     onChange={handleInputChange}
                 />
                 <label>Image</label>
                 <input
                     type="text"
-                    name="Image"
-                    value={courses.Image}
+                    name="img"
+                    value={course.img}
                     onChange={handleInputChange}
                 />
                 <label>Description</label>
                 <input
                     type="text"
                     name="description"
-                    value={courses.description}
+                    value={course.description}
                     onChange={handleInputChange}
                 />
                 <label>Term</label>
                 <input
                     type="text"
                     name="term"
-                    value={courses.term}
+                    value={course.term}
                     onChange={handleInputChange}
                 />
                 <label>Program</label>
-                <input
-                    type="text"
-                    name="program"
-                    value={courses.program}
-                    onChange={handleInputChange}
-                />
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <select
+                    id="program_id"
+                    onChange={handleSelectChange}>
+                        <option disabled hidden selected>Choose Department : Program</option>
+                    {DPL.map((p) => <option value={p.program_id}>{p.program + " : " + p.program_type_name}</option>)}
+                </select>
+                
+                <button onSubmit={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
 
             </form>
         </div>

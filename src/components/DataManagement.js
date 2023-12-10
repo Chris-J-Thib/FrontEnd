@@ -1,8 +1,4 @@
-import coursesData from "../databases/courses.json";
-import usersData from "../databases/users.json";
-import msgsData from "../databases/messages.json";
-
- function home(){
+function home(){
     window.location.href = "/";
 }
 
@@ -26,6 +22,35 @@ export async function IsAdmin(){
 export async function GetDepartments(){
     const resp = await fetch('api/admin/get-departments');
     return await resp.json();
+}
+
+
+
+export async function GetUserCourses(){
+    const resp = await fetch('api/student/my-courses?person_id='+sessionStorage.id);
+    return await resp.json();
+}
+
+
+
+export async function GetAllCourses(){
+    const resp = await fetch('api/admin/get-all-courses');
+    return await resp.json()
+}
+
+
+export async function SendMessage(q){
+    console.log(q);
+    const resp = await fetch('api/student/post-message',
+        {   method: "POST",
+            headers:    {'Accept': 'application/json','Content-Type': 'application/json'},
+            body: JSON.stringify(q)
+        });
+    const msg = await resp.json();
+    if(msg.error == undefined){
+        alert(msg.message);
+        home();
+    } else alert(msg.error);
 }
 
 
@@ -94,14 +119,85 @@ export async function GetUserValue(value, id = sessionStorage.id){
 
 
 
-export async function GetUserCourses(){
-    const resp = await fetch('api/student/my-courses?person_id='+sessionStorage.id);
-    return await resp.json();
+export async function DropCourse(e){
+    let node = e.target
+    while(node.className == "") node = node.parentNode;
+    const resp = await fetch(`api/admin/get-all-courses?course_code=${
+            node.children[1].textContent}`);
+    const data = await resp.json();
+    const eft = await fetch('api/student/withdraw-from-course',{
+                    method: "POST",
+                    headers:{'Accept': 'application/json','Content-Type': 'application/json'},
+                    body: JSON.stringify({course_id: data[0].course_id, person_id: sessionStorage.id})})
+    const msg = await eft.json();
+    if(msg.error != undefined) alert(`Error: ${msg.error}`);
+    else window.location.reload();
 }
 
 
 
-export async function GetAllCourses(){
-    const resp = await fetch('api/admin/get-all-courses');
-    return await resp.json()
+export async function EnrollCourse(e){
+    let node = e.target
+    while(node.className == "") node = node.parentNode;
+    const resp = await fetch(`api/admin/get-all-courses?course_code=${
+            node.children[1].textContent}`);
+    const data = await resp.json();
+    const eft = await fetch('api/student/enroll-to-course',{
+                    method: "POST",
+                    headers:{'Accept': 'application/json','Content-Type': 'application/json'},
+                    body: JSON.stringify({course_id: data[0].course_id, person_id: sessionStorage.id})})
+    const msg = await eft.json();
+    if(msg.error != undefined) alert(`Error: ${msg.error}`);
+    else window.location.reload();
+}
+
+
+
+export async function AddCourse(course){
+    let filled = true;
+    //check to make sure all fields are filled
+    Object.keys(course).forEach(key=>{if(course[key]=="") filled=false})
+    console.log(filled);
+    if(!filled) return false;
+    await fetch('api/admin/add-new-course-into-program',{
+        method: "POST",
+        headers:{'Accept': 'application/json','Content-Type': 'application/json'},
+        body: JSON.stringify(course)}) 
+    window.location.reload(); 
+}
+
+
+
+export async function ViewStudentsOnCourse(e){
+    let node = e.target
+    while(node.className == "") node = node.parentNode;
+    const resp1 = await fetch(`api/admin/get-all-courses?course_code=${
+            node.children[1].textContent}`);
+    const data1 = await resp1.json();
+    const resp2 = await fetch(`api/admin/get-enrollement?course_id=${data1[0].course_id}`);
+    const data2 = await resp2.json();
+    if(data2.length > 0){
+        let alertString = `Currently enrolled in ${data2[0].course}\n`
+        data2.forEach(ele=>alertString += `ID: ${ele.person_id} Name: ${ele.fullname} email: ${ele.email}\n`)
+        alert(alertString);
+    } else {
+        alert("No Students Currently Enrolled.");
+    }
+}
+
+
+
+export async function AdminDeleteCourse(e){
+    let node = e.target
+    while(node.className == "") node = node.parentNode;
+    const resp = await fetch(`api/admin/get-all-courses?course_code=${
+            node.children[1].textContent}`);
+    const data = await resp.json();
+    const eft = await fetch('api/admin/delete-course',{
+                    method: "DELETE",
+                    headers:{'Accept': 'application/json','Content-Type': 'application/json'},
+                    body: JSON.stringify({course_id: data[0].course_id})})
+    const msg = await eft.json();
+    if(msg.error != undefined) alert(`Error: ${msg.error}`);
+    else window.location.reload(); 
 }

@@ -1,30 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CourseFilter from './CourseFilter';
 import CourseList from './CourseList';
-import courses from '../databases/courses.json'
 import '../css/adminCheckCourse.css'
 
 
 function AdminCheckCourses() {
 
-  const [courseList, setCourseList] = useState(courses);
+  useEffect(()=>{
+    fetch('api/admin/get-all-courses').then(r=>r.json().then(c=>
+      setCourseList(c)))
+    courseRef.current = courseList;
+  },[])
+
+  const courseRef = useRef([]);
+
+  const [courseList, setCourseList] = useState([]);
 
 
   const handleSearch=(e)=>{
     e.preventDefault()
 
     console.log('Searching...')
-    const courseName = e.target[0].value
-    const courseCode = e.target[1].value
+    let courseName = String(e.target[0].value);
+    let courseCode = String(e.target[1].value).toUpperCase();
+    if(courseName == "") courseName = null;
+    if(courseCode == "") courseCode = null;
 
-    setCourseList(courses.filter(course => 
-      course.name.includes(courseName) && course.code.includes(courseCode)
+    setCourseList(courseRef.current.filter(course => 
+      course.name.includes(courseName) || course.code.includes(courseCode)
     ));
   } 
 
 
   return (
+    courseList.length > 0 ? (
     <div className="main-container-check-course">
         <div className="filter-section">
           <CourseFilter 
@@ -34,6 +43,7 @@ function AdminCheckCourses() {
           <CourseList courses={courseList} student={false}/>
         </div>
     </div>
+    ):(<div></div>)
   );
 }
 

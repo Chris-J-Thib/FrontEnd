@@ -5,15 +5,13 @@ import instagram from '../img/Instagram.png'
 import twitter from '../img/Twitter.png'
 import linkedin from '../img/Linkedin.png'
 import { useState, useEffect } from 'react'
-import { Logout, GetUserValue, IsAdmin } from './DataManagement.js'
+import { Logout, IsAdmin } from './DataManagement.js'
 
 export function NavBar() {
 
     useEffect(()=>{
-        IsAdmin().then(a=>
-            setAdmin(a)
-            );
-        console.log(admin);
+        IsAdmin().then(a=>setAdmin(a));
+        //console.log(admin);
     },[])
 
     const [admin, setAdmin] = useState();
@@ -26,12 +24,12 @@ export function NavBar() {
                         <li><a href="/">Home</a></li>
                         {sessionStorage.id == null ? <li><a href="/SignUp">SignUp</a></li> : ''}
                         {sessionStorage.id == null ? <li><a href="/Login">Login</a></li> : ''}
-                        {(sessionStorage.id != null) && (admin != 1) ? <li><a href="/Enroll">Enroll</a></li> : ''}
-                        {(sessionStorage.id != null) && (admin != 1) ? <li><a href="/MyCourses">My Courses</a></li> : ''}
-                        {admin == 1 ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
-                        {admin == 1 ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
-                        {admin == 1 ? <li><a href="/Messages">Messages</a></li> : ''}
-                        {admin != 1 ? <li><a href="/Contact">Contact Us</a></li> : ''} 
+                        {(sessionStorage.id != null) && !admin ? <li><a href="/Enroll">Enroll</a></li> : ''}
+                        {(sessionStorage.id != null) && !admin ? <li><a href="/MyCourses">My Courses</a></li> : ''}
+                        {admin ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
+                        {admin ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
+                        {admin ? <li><a href="/Messages">Messages</a></li> : ''}
+                        {!admin ? <li><a href="/Contact">Contact Us</a></li> : ''} 
                         {sessionStorage.id != null ? <li><button onClick={Logout}>Logout</button></li> : ''}
                     </ul>
                 </div>
