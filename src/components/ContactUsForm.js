@@ -85,9 +85,9 @@ function ContactUsForm() {//if user is signed in populate fields
     
             <select name="Program" id="prgm" value={message.userProgram != null ? message.userProgram : ""} onChange={handleProgramChange} disabled={sessionStorage.getItem("id") != null} >
               <option value="" disabled hidden>Program</option>
-              <option>Certificate</option>
-              <option>Diploma</option>
-              <option>Post-Diploma</option>
+              <option value="1">Undergraduate</option>
+              <option value="2">Post-Graduate</option>
+              <option value="3">Diploma</option>
             </select><br />
           </div>
     

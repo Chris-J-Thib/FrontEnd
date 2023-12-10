@@ -4,24 +4,35 @@ import facebook from '../img/Facebook.png'
 import instagram from '../img/Instagram.png'
 import twitter from '../img/Twitter.png'
 import linkedin from '../img/Linkedin.png'
-import { Logout, GetUserValue } from './DataManagement.js'
+import { useState, useEffect } from 'react'
+import { Logout, GetUserValue, IsAdmin } from './DataManagement.js'
 
 export function NavBar() {
+
+    useEffect(()=>{
+        IsAdmin().then(a=>
+            setAdmin(a)
+            );
+        console.log(admin);
+    },[])
+
+    const [admin, setAdmin] = useState();
+
     return (
         <div className="NavBar">
             <nav>
                 <div>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        {sessionStorage.getItem("id") == null ? <li><a href="/SignUp">SignUp</a></li> : ''}
-                        {sessionStorage.getItem("id") == null ? <li><a href="/Login">Login</a></li> : ''}
-                        {(sessionStorage.getItem("id") != null) && (GetUserValue("program") != "Admin") ? <li><a href="/Enroll">Enroll</a></li> : ''}
-                        {(sessionStorage.getItem("id") != null) && (GetUserValue("program") != "Admin") ? <li><a href="/MyCourses">My Courses</a></li> : ''}
-                        {GetUserValue("program") == "Admin" ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
-                        {GetUserValue("program") == "Admin" ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
-                        {GetUserValue("program") == "Admin" ? <li><a href="/Messages">Messages</a></li> : ''}
-                        {GetUserValue("program") != "Admin" ? <li><a href="/Contact">Contact Us</a></li> : ''} 
-                        {sessionStorage.getItem("id") !== null ? <li><button onClick={Logout}>Logout</button></li> : ''}
+                        {sessionStorage.id == null ? <li><a href="/SignUp">SignUp</a></li> : ''}
+                        {sessionStorage.id == null ? <li><a href="/Login">Login</a></li> : ''}
+                        {(sessionStorage.id != null) && (admin != 1) ? <li><a href="/Enroll">Enroll</a></li> : ''}
+                        {(sessionStorage.id != null) && (admin != 1) ? <li><a href="/MyCourses">My Courses</a></li> : ''}
+                        {admin == 1 ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
+                        {admin == 1 ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
+                        {admin == 1 ? <li><a href="/Messages">Messages</a></li> : ''}
+                        {admin != 1 ? <li><a href="/Contact">Contact Us</a></li> : ''} 
+                        {sessionStorage.id != null ? <li><button onClick={Logout}>Logout</button></li> : ''}
                     </ul>
                 </div>
             </nav>

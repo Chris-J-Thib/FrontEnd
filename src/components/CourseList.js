@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Course from './Course';
-import { AddCourse, DropCourse, GetUserValue, ViewStudentsOnCourse, AdminDeleteCourse, GetUserCourses } from "./DataManagement";
+import { AddCourse, DropCourse, ViewStudentsOnCourse, AdminDeleteCourse, GetUserCourses } from "./DataManagement";
 import '../css/courseList.css'
 
 function CourseList (props) {
 
   useEffect(()=>{
     GetUserCourses().then((x)=>{
+      console.log(x);
+        if(x == null)setCourseList([]);
         setCourseList(x);
+        console.log(courseList);
       });
-  });
+  },[]);
 
-  const [userCourses, setCourseList] = useState([]);
+  const [courseList, setCourseList] = useState([]);
 
   return (
+    props.courses.length > 0 ? (
     <div>
       {
       props.courses.map(course => (
@@ -28,7 +32,7 @@ function CourseList (props) {
             <div>
             {props.student ? (
               
-              userCourses.filter(c=>c.code == course.code).length != 0 ? (
+              courseList.length > 0 && courseList.filter(c=>c.code == course.code).length != 0 ? (
                 <>
                 <button onClick={DropCourse}>Drop</button>
                 </>
@@ -50,6 +54,7 @@ function CourseList (props) {
         </div>
       ))}
     </div>
+    ) : (<div></div>)
   );
   }
 

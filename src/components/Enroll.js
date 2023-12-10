@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../css/enroll.css'
 import { useState, useEffect} from 'react';
 import CourseFilter from './CourseFilter';
@@ -10,21 +10,31 @@ function Enroll() {
    useEffect(()=>{
     GetAllCourses().then((x)=>{
         setCourseList(x);
+        refCourseList.current = x;
       });
   },[]);
+
+  const refCourseList = useRef([]);
 
   const [courseList, setCourseList] = useState([]);
 
 
   const handleSearch=(e)=>{
-    e.preventDefault()
+    e.preventDefault();
 
-    console.log('Searching...')
-    const courseName = e.target[0].value
-    const courseCode = e.target[1].value
+    console.log('Searching...');
+    
+    let courseName = String(e.target[0].value);
+    let courseCode = String(e.target[1].value).toUpperCase();
+    if(courseName == "") courseName = null;
+    if(courseCode == "") courseCode = null;
 
-    setCourseList(courseList.filter(course => 
-      course.name.includes(courseName) && course.code.includes(courseCode)
+    console.log(`Name ${courseName} Code ${courseCode}`);
+
+    console.log(courseList);
+
+    setCourseList(refCourseList.current.filter(course => 
+      course.name.includes(courseName) || course.code.includes(courseCode)
     ));
   } 
 

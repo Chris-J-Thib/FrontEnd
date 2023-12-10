@@ -2,6 +2,7 @@ import React from "react";
 import '../css/courseFilter.css'
 
 function CourseFilter(props) {
+
   return (
     <div className="filter-container">
       <h2>Course Filter</h2>

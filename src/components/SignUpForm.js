@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import '../css/signUpForm.css'
 import '../css/global-for-pages.css'
 import {  GetDepartments, SignUp } from "./DataManagement";
 
 function SignUpForm() {
 
-  const [dpl, setDPL] = useState();
-  
-setDPL(
-  GetDepartments().then()
-)
+   useEffect(()=>{
+    GetDepartments().then(x=>
+      setDPL(x))
+   },[]);
+
+  const [DPL, setDPL] = useState([]);
+
   
       
   
@@ -22,7 +24,7 @@ setDPL(
 
           <input type="email" id="email" placeholder="Email" />
 
-          <input type="tel" id="phone" placeholder="Phone" />
+          <input type="tel" id="phone" placeholder="Phone" pattern="[0-9]{10}"/>
 
           <label htmlFor="birthday">Birthday:</label>
           <input type="date" id='birthday' />
@@ -30,7 +32,7 @@ setDPL(
 
           <select id="program_id">
             <option disabled hidden selected>Choose Department : Program</option>
-            {dpl.map((p) => <option value={p.program_id}>{p.program + " : " + p.program_type_name}</option> )}
+            {DPL.map((p) => <option value={p.program_id}>{p.program + " : " + p.program_type_name}</option> )}
           </select>
 
 
