@@ -25,11 +25,11 @@ function MyCourses() {
     
     let courseName = String(e.target[0].value);
     let courseCode = String(e.target[1].value).toUpperCase();
-    if(courseName == "") courseName = null;
-    if(courseCode == "") courseCode = null;
+    if(courseName == "" && courseCode != "") courseName = null;
+    if(courseCode == "" && courseName != "") courseCode = null;
 
     const newList = courseList.filter(course => 
-      course.name.includes(courseName) && course.code.includes(courseCode));
+      course.name.includes(courseName) || course.code.includes(courseCode));
     setCourseList(newList);
     }
 

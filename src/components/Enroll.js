@@ -26,8 +26,8 @@ function Enroll() {
     
     let courseName = String(e.target[0].value);
     let courseCode = String(e.target[1].value).toUpperCase();
-    if(courseName == "") courseName = null;
-    if(courseCode == "") courseCode = null;
+    if(courseName == "" && courseCode != "") courseName = null;
+    if(courseCode == "" && courseName != "") courseCode = null;
 
     console.log(`Name ${courseName} Code ${courseCode}`);
 
