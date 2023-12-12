@@ -16,10 +16,10 @@ const AdminAddCourses = {
 
 const AddCoursesForm = () => {
 
-    useEffect(()=>{
-        GetDepartments().then(x=>
-        setDPL(x))
-     },[]);
+    useEffect(() => {
+        GetDepartments().then(x =>
+            setDPL(x))
+    }, []);
 
     const [DPL, setDPL] = useState([]);
 
@@ -30,13 +30,20 @@ const AddCoursesForm = () => {
     };
 
     const handleSelectChange = (e) => {
-        setCourse({ ...course, program_id: e.target.value});
+        setCourse({ ...course, program_id: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(course);
         AddCourse(course);
+        //check if all fields are filled
+        if (course.code === '' || course.name === '' || course.start_date === '' || course.end_date === '' || course.img === '' || course.description === '' || course.term === '' || course.program_id === '') {
+            alert("Please fill all the fields");
+            return;
+        }
+        alert("Course Added Successfully");
+        window.location.reload();
     };
 
     return (
@@ -72,12 +79,22 @@ const AddCoursesForm = () => {
                     onChange={handleInputChange}
                 />
                 <label>Image</label>
-                <input
+                <select
                     type="text"
                     name="img"
                     value={course.img}
                     onChange={handleInputChange}
-                />
+                >
+                    <option value="algorithms-and-data-structures.png">Algorithms</option>
+                    <option value="enterprise-computing.png">Enterprise</option>
+                    <option value="introduction-to-game-and-simulation-programming.png">Game</option>
+                    <option value="introduction-to-project-teams-and-technical-communications-for-software-development.png">Project Teams</option>
+                    <option value="introduction-to-relational-databases.png">Database</option>
+                    <option value="introduction-to-web-programming.png">Web programming</option>
+                    <option value="math-for-the-computer-industry.png">Math</option>
+                    <option value="mobile-application-development.png">App</option>
+                </select>
+
                 <label>Description</label>
                 <input
                     type="text"
@@ -95,11 +112,12 @@ const AddCoursesForm = () => {
                 <label>Program</label>
                 <select
                     id="program_id"
-                    onChange={handleSelectChange}>
-                        <option disabled hidden selected>Choose Department : Program</option>
+                    onChange={handleSelectChange}
+                >
+                    <option disabled hidden selected>Choose Department : Program</option>
                     {DPL.map((p) => <option value={p.program_id}>{p.program + " : " + p.program_type_name}</option>)}
                 </select>
-                
+
                 <button onSubmit={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
 
             </form>
