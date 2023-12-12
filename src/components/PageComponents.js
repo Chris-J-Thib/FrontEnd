@@ -7,12 +7,15 @@ import linkedin from '../img/Linkedin.png'
 import { useState, useEffect } from 'react'
 import { Logout, IsAdmin } from './DataManagement.js'
 
+
 export function NavBar() {
 
-    useEffect(()=>{
-        IsAdmin().then(a=>setAdmin(a));
+    useEffect(() => {
+        IsAdmin().then(a => setAdmin(a));
         //console.log(admin);
-    },[])
+    }, [])
+
+
 
     const [admin, setAdmin] = useState();
 
@@ -29,7 +32,7 @@ export function NavBar() {
                         {admin ? <li><a href="/AdminCheckCourses">Admin Check courses</a></li> : ''}
                         {admin ? <li><a href="/AdminAddCourses">Admin Add courses</a></li> : ''}
                         {admin ? <li><a href="/Messages">Messages</a></li> : ''}
-                        {!admin ? <li><a href="/Contact">Contact Us</a></li> : ''} 
+                        {!admin ? <li><a href="/Contact">Contact Us</a></li> : ''}
                         {sessionStorage.id != null ? <li><button onClick={Logout}>Logout</button></li> : ''}
                     </ul>
                 </div>
